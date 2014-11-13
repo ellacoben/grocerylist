@@ -1,5 +1,5 @@
-
-<h1> <%= @user.name %>'s To Do List</h1>
+<!-- grocery list -->
+<div class="center"><h1> <%= @user.name %>'s groceries</h1>
 
  <% @tasks.each do |task| %>  
    <% unless task.description.blank? %> <%= task.description %> <% end %>
@@ -15,11 +15,16 @@
 <form action='/new_item' method='POST'>
   <strong>New Task:</strong>
   <input type='text' name='task' placeholder='task content' />
-  <input type='text' name='date' placeholder='due: yy/mm/dd' />
+  <select>
+  <option value="full_supply">Full Supply</option>
+  <option value="running_low">Running Low</option>
+  <option value="out">All Out!</option>
+</select>
   <input type='submit' value='Save'/>
 </form>
 <br>
-<a style="text-decoration: underline" href="/#{params[:user]}">Switch Users</a>
+<a style="text-decoration: underline" href="/logout">Log Out</a>
+</div>
 <!-- <form action='/' method='POST'>
   <strong>Finished Task:</strong>
   <input type='text' name='completed' placeholder='finished task' />

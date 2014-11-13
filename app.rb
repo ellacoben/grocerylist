@@ -1,4 +1,5 @@
 # app.rb
+#grocery list
 
 # use bundler
 require 'rubygems'
@@ -30,25 +31,25 @@ before do
 end
 
 
-get '/login' do
-	erb :login
+get '/signup' do
+	erb :signup
 end
 
 get '/logout' do
 	session.clear
-	return "You are logged out" #later add view
+	erb :logout
 end
 
 post '/login' do
 	user = User.find_by(name: params[:username])
 	if user.nil?
-		return "User not found"
+		return erb :loginfailed
 	end
 	if user.authenticate(params[:password])
 		session[:username] = user.name
 		redirect '/todos'
 	else 
-		return "Login failed."
+		erb :loginfailed
 	end
 	#require 'json'
 	#JSON.pretty_generate params
@@ -79,7 +80,7 @@ end
 
 get '/' do
   @users = User.all.order(:name)
-  erb :user_list
+  erb :login
 end
 
 get '/:todos' do

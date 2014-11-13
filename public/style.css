@@ -1,10 +1,25 @@
-
+/*<!-- grocery list -->*/
 html {
 	min-height: 100%;
-	background-image: url(https://scontent-b-sjc.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/9898_10151592525643614_1113453010_n.jpg?oh=f372b5fcf5f6d9cde1cb08367d233e80&oe=54E5C6C5);
+	background-image: url(http://www.tentree.com/blog/wp-content/uploads/2014/07/vegetables-3.jpg);
+   /*https://scontent-b-sjc.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/9898_10151592525643614_1113453010_n.jpg?oh=f372b5fcf5f6d9cde1cb08367d233e80&oe=54E5C6C5*/
    /*https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/10511166_10152682604558614_5057466635785536819_n.jpg?oh=8e434607e2c2aaae4312fa5c1a2b7097&oe=551A2C5E&__gda__=1427866696_eb91f719eacc7cd7c479c6aaea3d0d78*/
    /*http://www.chattanoogaville.com/images/american-eagle-melanietipton-melanietiptonofficialwebsite-chattanoogaville-chattanoogavilleconservativetvshow-lloydmarcusarticles-conservativetelevision.jpg*/
 	background-size: 100%;
+}
+
+div {
+    text-align: center;
+    width: 60%;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0; 
+    background-color: #D6D6D8;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a:link {
