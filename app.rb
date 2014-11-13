@@ -83,8 +83,8 @@ get '/' do
   erb :login
 end
 
-get '/:todos' do
-  redirect 'login' unless @user
+get '/todos' do
+  redirect '/' unless @user
   @tasks = @user.todo_items.order(:due_date)
   erb :todo_list
 end

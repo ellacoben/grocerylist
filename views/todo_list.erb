@@ -6,7 +6,7 @@
    <% unless task.due_date.blank? %> - <% end %>
    <%= task.due_date%>
    <% unless task.description.blank? %> 
-   <a style="text-decoration: none" href='/delete_item/<%= task.id %>'><button class="button"> Done! </button> </a> <% end %>
+   <a style="text-decoration: none" href='/delete_item/<%= task.id %>'><button class="button"> Delete Item </button> </a> <% end %>
    <% unless task.description.blank? %> <br> <%end%>
   <% end %> 
  
@@ -15,15 +15,15 @@
 <form action='/new_item' method='POST'>
   <strong>New Task:</strong>
   <input type='text' name='task' placeholder='task content' />
-  <select>
-  <option value="full_supply">Full Supply</option>
-  <option value="running_low">Running Low</option>
-  <option value="out">All Out!</option>
-</select>
+  <select name = 'date'>
+  <option value="Full Supply">Full Supply</option>
+  <option value="Running Low">Running Low</option>
+  <option value="All Out!">All Out!</option>
+  </select>
   <input type='submit' value='Save'/>
-</form>
-<br>
+<br><br>
 <a style="text-decoration: underline" href="/logout">Log Out</a>
+</form>
 </div>
 <!-- <form action='/' method='POST'>
   <strong>Finished Task:</strong>
