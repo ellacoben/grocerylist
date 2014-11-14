@@ -21,9 +21,13 @@
  <% unless task.due_date == "All Out!" %>
    <% unless task.description.blank? %>  <a style="text-decoration: none" href='/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> <%= task.description %> 
    
+   <% unless task.due_date == "Full Supply" %>
    <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button> </a> 
+   <% end %>
 
+<% unless task.due_date == "Running Low" %>
     <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button> </a> 
+    <% end %>
 
 
   <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button> </a>
@@ -43,13 +47,17 @@
 
  <% unless task.due_date == "Full Supply" %>
    <% unless task.description.blank? %>  <a style="text-decoration: none" href='/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> <%= task.description %> 
+
    
    <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button> </a> 
 
+   <% unless task.due_date == "Running Low" %>
     <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button> </a> 
+    <% end %>
 
-
+<% unless task.due_date == "All Out!" %>
   <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button> </a>
+  <% end %>
 
   <% unless task.due_date.blank? %> <%= task.due_date%><% end %> <% end %>
    <% unless task.description.blank? %> 
