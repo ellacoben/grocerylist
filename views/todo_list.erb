@@ -1,29 +1,8 @@
 <!-- grocery list -->
 <div class="center"><h1> <%= @user.name %>'s groceries</h1>
 
- <% @tasks.each do |task| %>  
-   <% unless task.description.blank? %> <%= task.description %> 
-   <% unless task.due_date.blank? %> - <%= task.due_date%><% end %> <% end %>
-   <% unless task.description.blank? %> 
-
-
-   <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="button"> Freshly Stocked </button> </a> 
-
-    <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="button"> Running Low </button> </a> 
-
-
-  <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="button"> All Out! </button> </a>
-   
-   <a style="text-decoration: none" href='/delete_item/<%= task.id %>'><button class="button"> Delete Item </button> </a> 
-
-   <% end %>
-   <% unless task.description.blank? %> <br> <%end%>
-  <% end %> 
- 
-
-<br><br><br><br>
 <form action='/new_item' method='POST'>
-  <strong>New Task:</strong>
+  <strong>Add Food Item:</strong>
   <input type='text' name='task' placeholder='task content' />
   <select name = 'date'>
   <option value="Full Supply">Full Supply</option>
@@ -35,10 +14,27 @@
 <a style="text-decoration: underline" href="/logout">Log Out</a>
 </form>
 </div>
-<!-- <form action='/' method='POST'>
-  <strong>Finished Task:</strong>
-  <input type='text' name='completed' placeholder='finished task' />
-  <input type='submit' value='Save'/>
-</form> -->
+
+<div class="left"> <h2> I have: </h2>
+  <% @tasks.each do |task| %>  
+   <% unless task.description.blank? %> <%= task.description %> 
+   <% unless task.due_date.blank? %> - <%= task.due_date%><% end %> <% end %>
+   <% unless task.description.blank? %> 
+   <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button> </a> 
+
+    <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button> </a> 
+
+
+  <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button> </a>
+   
+   <a style="text-decoration: none" href='/delete_item/<%= task.id %>'><button class="delete"> X</button> </a> 
+
+   <% end %>
+   <% unless task.description.blank? %> <br> <%end%>
+  <% end %> 
+
+
+</div>
+<div class="right"> <h2>I need: </h2> </div>
 
 

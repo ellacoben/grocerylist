@@ -85,7 +85,7 @@ end
 
 get '/todos' do
   redirect '/' unless @user
-  @tasks = @user.todo_items.order(:due_date)
+  @tasks = @user.todo_items.order(:description)
   erb :todo_list
 end
 
