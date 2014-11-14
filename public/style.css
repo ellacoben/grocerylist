@@ -95,7 +95,7 @@ h1 {
    }
 
 .full {
-  background-color:#b8e356;
+  background-color:#197519;
   -webkit-border-top-left-radius:36px;
   -moz-border-radius-topleft:36px;
   border-top-left-radius:36px;
@@ -116,10 +116,11 @@ h1 {
   text-shadow:1px 1px 0px #86ae47;
 }
 .full:hover {
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #b8e356) );
-  background:-moz-linear-gradient( center top, #a5cc52 5%, #b8e356 100% );
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #145E14), color-stop(1, #197519) );
+  background:-moz-linear-gradient( center top, #145E14 5%, #197519 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356');
-  background-color:#a5cc52;
+  background-color:#145E14;
+  content: "Freshly Stocked";
 }.full:active {
   position:relative;
   top:1px;
@@ -147,8 +148,8 @@ h1 {
   text-shadow:1px 1px 0px #86ae47;
 }
 .low:hover {
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #FFD119) );
-  background:-moz-linear-gradient( center top, #a5cc52 5%, #FFD119 100% );
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #CCA714), color-stop(1, #FFD119) );
+  background:-moz-linear-gradient( center top, #CCA714 5%, #FFD119 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356');
   background-color:#a5cc52;
 }.low:active {
@@ -178,8 +179,8 @@ h1 {
   text-shadow:1px 1px 0px #86ae47;
 }
 .out:hover {
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #CC0000) );
-  background:-moz-linear-gradient( center top, #a5cc52 5%, #CC0000 100% );
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #A30000), color-stop(1, #CC0000) );
+  background:-moz-linear-gradient( center top, #A30000 5%, #CC0000 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356');
   background-color:#a5cc52;
 }.out:active {
@@ -187,14 +188,12 @@ h1 {
   top:1px;
 }
 .delete {
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 8px;
+  border-radius: 6px;*/
   font-family: Arial;
   color: #d1d1d1;
-  font-size: 12px;
+  font-size: 8px;
   background: #606d75;
-  padding: 6px 9px 6px 9px;
+  padding: 4px 7px 1px 7px;
   text-decoration: none;
 }
 

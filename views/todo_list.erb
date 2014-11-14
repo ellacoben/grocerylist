@@ -16,25 +16,49 @@
 </div>
 
 <div class="left"> <h2> I have: </h2>
-  <% @tasks.each do |task| %>  
-   <% unless task.description.blank? %> <%= task.description %> 
-   <% unless task.due_date.blank? %> - <%= task.due_date%><% end %> <% end %>
-   <% unless task.description.blank? %> 
+  <% @tasks.each do |task| %> 
+
+ <% unless task.due_date == "All Out!" %>
+   <% unless task.description.blank? %>  <a style="text-decoration: none" href='/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> <%= task.description %> 
+   
    <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button> </a> 
 
     <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button> </a> 
 
 
   <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button> </a>
-   
-   <a style="text-decoration: none" href='/delete_item/<%= task.id %>'><button class="delete"> X</button> </a> 
 
+  <% unless task.due_date.blank? %> <%= task.due_date%><% end %> <% end %>
+   <% unless task.description.blank? %> 
+   
    <% end %>
    <% unless task.description.blank? %> <br> <%end%>
   <% end %> 
+  <% end %>
 
 
 </div>
-<div class="right"> <h2>I need: </h2> </div>
+<div class="right"> <h2>I need: </h2> 
+<% @tasks.each do |task| %> 
+
+ <% unless task.due_date == "Full Supply" %>
+   <% unless task.description.blank? %>  <a style="text-decoration: none" href='/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> <%= task.description %> 
+   
+   <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button> </a> 
+
+    <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button> </a> 
+
+
+  <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button> </a>
+
+  <% unless task.due_date.blank? %> <%= task.due_date%><% end %> <% end %>
+   <% unless task.description.blank? %> 
+   
+   <% end %>
+   <% unless task.description.blank? %> <br> <%end%>
+  <% end %> 
+  <% end %>
+  </div>
+
 
 
