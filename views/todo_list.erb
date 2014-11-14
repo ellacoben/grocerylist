@@ -2,11 +2,21 @@
 <div class="center"><h1> <%= @user.name %>'s groceries</h1>
 
  <% @tasks.each do |task| %>  
-   <% unless task.description.blank? %> <%= task.description %> <% end %>
-   <% unless task.due_date.blank? %> - <% end %>
-   <%= task.due_date%>
+   <% unless task.description.blank? %> <%= task.description %> 
+   <% unless task.due_date.blank? %> - <%= task.due_date%><% end %> <% end %>
    <% unless task.description.blank? %> 
-   <a style="text-decoration: none" href='/delete_item/<%= task.id %>'><button class="button"> Delete Item </button> </a> <% end %>
+
+
+   <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="button"> Freshly Stocked </button> </a> 
+
+    <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="button"> Running Low </button> </a> 
+
+
+  <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="button"> All Out! </button> </a>
+   
+   <a style="text-decoration: none" href='/delete_item/<%= task.id %>'><button class="button"> Delete Item </button> </a> 
+
+   <% end %>
    <% unless task.description.blank? %> <br> <%end%>
   <% end %> 
  

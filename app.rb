@@ -89,6 +89,24 @@ get '/todos' do
   erb :todo_list
 end
 
+get '/change_status_full/:item' do
+	@todo_item = TodoItem.find(params[:item])
+	@todo_item.update(due_date: "Full Supply")
+	redirect '/todos'
+end
+
+get '/change_status_low/:item' do
+	@todo_item = TodoItem.find(params[:item])
+	@todo_item.update(due_date: "Running Low")
+	redirect '/todos' 
+end
+
+get '/change_status_out/:item' do
+	@todo_item = TodoItem.find(params[:item])
+	@todo_item.update(due_date: "All Out!")
+	redirect '/todos'
+end
+
 
 
 
