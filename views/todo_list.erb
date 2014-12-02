@@ -3,11 +3,30 @@
 
 <form action='/new_item' method='POST'>
   <strong>Add Food Item:</strong>
-  <input type='text' name='task' placeholder='task content' />
+  <input type='text' name='task' placeholder='item name' />
   <select name = 'date'>
   <option value="Full Supply">Full Supply</option>
   <option value="Running Low">Running Low</option>
   <option value="All Out!">All Out!</option>
+  </select>
+  <select name = 'number'>
+  <option value=1>1</option>
+  <option value=2>2</option>
+  <option value=3>3</option>
+  <option value=4>4</option>
+  <option value=5>5</option>
+  <option value=6>6</option>
+  <option value=7>7</option>
+  <option value=8>8</option>
+  <option value=9>9</option>
+  <option value=10>10</option>
+  </select>
+  <select name = 'unit'>
+  <option value=""> </option>
+  <option value="box">box</option>
+  <option value="bag">bag</option>
+  <option value="jar">jar</option>
+  <option value="can">can</option>
   </select>
   <input type='submit' value='Save'/>
 <br><br>
@@ -16,57 +35,57 @@
 </div>
 
 <div class="left"> <h2> I have: </h2>
-  <% @tasks.each do |task| %> 
+<% @tasks.each do |task| %> 
+<% unless task.due_date == "All Out!" %>
+<% unless task.description.blank? %> 
 
- <% unless task.due_date == "All Out!" %>
-   <% unless task.description.blank? %>  <a style="text-decoration: none" href='/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> <%= task.description %> 
-   
-   <% unless task.due_date == "Full Supply" %>
-   <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button> </a> 
-   <% end %>
-
-<% unless task.due_date == "Running Low" %>
-    <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button> </a> 
-    <% end %>
-
-
-  <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button> </a>
-
-  <% unless task.due_date.blank? %> <%= task.due_date%><% end %> <% end %>
-   <% unless task.description.blank? %> 
-   
-   <% end %>
-   <% unless task.description.blank? %> <br> <%end%>
-  <% end %> 
+  <% if task.due_date == "Full Supply" %>
+    <button class="full"></button> 
   <% end %>
 
+  <% if task.due_date == "Running Low" %>
+    <button class="low"></button>  
+  <% end %>
 
+  
+  <% unless task.number.blank? %> <%= task.number %> <% end %>
+  <% unless task.unit.blank? %> <%= task.unit %> <% end %>
+  <%= task.description %> 
+
+  <a style="text-decoration: none" href= '/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> 
+  
+
+  <br>
+<% end %> 
+<% end %>
+<% end %>
 </div>
+
 <div class="right"> <h2>I need: </h2> 
 <% @tasks.each do |task| %> 
+<% unless task.due_date == "Full Supply" %>
+<% unless task.description.blank? %> 
 
- <% unless task.due_date == "Full Supply" %>
-   <% unless task.description.blank? %>  <a style="text-decoration: none" href='/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> <%= task.description %> 
-
-   
-   <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button> </a> 
-
-   <% unless task.due_date == "Running Low" %>
-    <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button> </a> 
-    <% end %>
-
-<% unless task.due_date == "All Out!" %>
-  <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button> </a>
+  <% if task.due_date == "Running Low" %>
+    <button class="low"></button>
   <% end %>
 
-  <% unless task.due_date.blank? %> <%= task.due_date%><% end %> <% end %>
-   <% unless task.description.blank? %> 
-   
-   <% end %>
-   <% unless task.description.blank? %> <br> <%end%>
-  <% end %> 
+  <% if task.due_date == "All Out!" %>
+    <button class="out"></button> 
   <% end %>
-  </div>
+
+   <% unless task.number.blank? %> <%= task.number %> <% end %>
+  <% unless task.unit.blank? %> <%= task.unit %> <% end %>
+  <%= task.description %> 
+
+  <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> 
+  
+   
+  <br>
+<% end %>
+<% end %> 
+<% end %>
+</div>
 
 
 

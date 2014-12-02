@@ -56,7 +56,7 @@ post '/login' do
 end
 
  post '/new_item' do
- 	@user.todo_items.create(description: params[:task], due_date: params[:date])
+ 	@user.todo_items.create(description: params[:task], due_date: params[:date], number: params[:number], unit: params[:unit])
 	 redirect '/todos'
  end
 
@@ -79,7 +79,6 @@ get '/delete_item/:item' do
 end
 
 get '/' do
-  @users = User.all.order(:name)
   erb :login
 end
 
