@@ -69,12 +69,6 @@
               <%= task.description %> 
             </td>
             <td style="width:25%">
-              <a style="text-decoration: none" href= '/delete_item/<%= task.id %>'>
-                <button class="delete"> 
-                  <span title="delete item"> X
-                  </span>
-                </button> 
-              </a> 
               <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'>
                 <button class="low">
                 </button>
@@ -83,6 +77,12 @@
                 <button class="out">
                 </button>
               </a>
+              <a style="text-decoration: none" href= '/delete_item/<%= task.id %>'>
+                <button class="delete"> 
+                  <span title="delete item"> X
+                  </span>
+                </button> 
+              </a> 
             </td>
             <td style="width:35%">
               <form action='/update_number/<%= task.id %>' method='GET'>
@@ -97,16 +97,6 @@
                   <option value=8>8</option>
                   <option value=9>9</option>
                   <option value=10>10</option>
-                </select>
-                <input type='submit' value='Save'/>
-              </form>
-              <form action='/update_unit/<%= task.id %>' method='GET'>
-                <select name = 'unit'>
-                  <option value=""> </option>
-                  <option value="box">box</option>
-                  <option value="bag">bag</option>
-                  <option value="jar">jar</option>
-                  <option value="can">can</option>
                 </select>
                 <input type='submit' value='Save'/>
               </form>
@@ -137,12 +127,6 @@
               <%= task.description %> 
             </td>
             <td style="width:25%">
-              <a style="text-decoration: none" href= '/delete_item/<%= task.id %>'>
-                <button class="delete">
-                  <span title="delete item">X
-                  </span>
-                </button> 
-              </a> 
               <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'>
                 <button class="full">
                 </button>
@@ -151,6 +135,12 @@
                 <button class="out">
                 </button>
               </a>
+              <a style="text-decoration: none" href= '/delete_item/<%= task.id %>'>
+                <button class="delete">
+                  <span title="delete item">X
+                  </span>
+                </button> 
+              </a> 
             </td>
             <td style="width:35%">
               <form action='/update_number/<%= task.id %>' method='GET'>
@@ -165,16 +155,6 @@
                   <option value=8>8</option>
                   <option value=9>9</option>
                   <option value=10>10</option>
-                </select>
-                <input type='submit' value='Save'/>
-              </form>
-              <form action='/update_unit/<%= task.id %>' method='GET'>
-                <select name = 'unit'>
-                  <option value=""> </option>
-                  <option value="box">box</option>
-                  <option value="bag">bag</option>
-                  <option value="jar">jar</option>
-                  <option value="can">can</option>
                 </select>
                 <input type='submit' value='Save'/>
               </form>
@@ -223,13 +203,7 @@
             <td style="width: 20%">
               <%= task.description %> 
             </td>
-            <td style="width: 25%">
-              <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' >
-                <button class="delete"> 
-                  <span title="delete item">X
-                  </span>
-                </button> 
-              </a> 
+            <td style="width: 25%"> 
               <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'>
                 <button class="full">
                 </button>
@@ -237,6 +211,12 @@
               <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'>
                 <button class="out">
                 </button>
+              </a>
+              <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' >
+                <button class="delete"> 
+                  <span title="delete item">X
+                  </span>
+                </button> 
               </a>
             </td>
             <td style="width:35%">
@@ -252,16 +232,6 @@
                   <option value=8>8</option>
                   <option value=9>9</option>
                   <option value=10>10</option>
-                </select>
-                <input type='submit' value='Save'/>
-              </form>
-              <form action='/update_unit/<%= task.id %>' method='GET'>
-                <select name = 'unit'>
-                  <option value=""> </option>
-                  <option value="box">box</option>
-                  <option value="bag">bag</option>
-                  <option value="jar">jar</option>
-                  <option value="can">can</option>
                 </select>
                 <input type='submit' value='Save'/>
               </form>
@@ -291,13 +261,7 @@
             <td style="width: 20%">
               <%= task.description %> 
             </td>
-            <td style="width: 25%">
-              <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' >
-                <button class="delete"> 
-                  <span title="delete item">X
-                  </span>
-                </button> 
-              </a> 
+            <td style="width: 25%"> 
               <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'>
                 <button class="full">
                 </button>
@@ -305,6 +269,12 @@
               <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'>
                 <button class="low">
                 </button>
+              </a>
+              <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' >
+                <button class="delete"> 
+                  <span title="delete item">X
+                  </span>
+                </button> 
               </a>
             </td>
             <td style="width:35%">
@@ -320,16 +290,6 @@
                   <option value=8>8</option>
                   <option value=9>9</option>
                   <option value=10>10</option>
-                </select>
-                <input type='submit' value='Save'/>
-              </form>
-              <form action='/update_unit/<%= task.id %>' method='GET'>
-                <select name = 'unit'>
-                  <option value=""> </option>
-                  <option value="box">box</option>
-                  <option value="bag">bag</option>
-                  <option value="jar">jar</option>
-                  <option value="can">can</option>
                 </select>
                 <input type='submit' value='Save'/>
               </form>
