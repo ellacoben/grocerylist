@@ -32,6 +32,14 @@ div {
   width: 45%;
 }
 
+.bottom {
+  width: 40%;
+  left: 20%;
+  float: center;
+  position: absolute;
+  bottom: 0;
+}
+
 a:link {
     color: #65a9d7;
 }

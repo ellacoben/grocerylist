@@ -60,6 +60,18 @@ end
 	 redirect '/todos'
  end
 
+ get '/update_number/:item' do
+ 	@todo_item = TodoItem.find(params[:item])
+ 	@todo_item.update(number: params[:number])
+ 	redirect '/edit'
+ end
+
+ get '/update_unit/:item' do
+ 	@todo_item = TodoItem.find(params[:item])
+ 	@todo_item.update(unit: params[:unit])
+ 	redirect '/edit'
+ end
+
  post '/new_user' do 
  	@user = User.create(params)
  	redirect '/'
@@ -75,7 +87,7 @@ get '/delete_item/:item' do
 	@todo_item = TodoItem.find(params[:item])
 	@user = @todo_item.user
 	@todo_item.destroy
-	redirect '/todos'
+	redirect '/edit'
 end
 
 get '/' do
@@ -88,23 +100,35 @@ get '/todos' do
   erb :todo_list
 end
 
+get '/edit' do
+	redirect '/' unless @user
+	@tasks = @user.todo_items.order(:description)
+	erb :edit_items
+end
+
 get '/change_status_full/:item' do
 	@todo_item = TodoItem.find(params[:item])
 	@todo_item.update(due_date: "Full Supply")
-	redirect '/todos'
+	redirect '/edit'
 end
 
 get '/change_status_low/:item' do
 	@todo_item = TodoItem.find(params[:item])
 	@todo_item.update(due_date: "Running Low")
-	redirect '/todos' 
+	redirect '/edit' 
 end
 
 get '/change_status_out/:item' do
 	@todo_item = TodoItem.find(params[:item])
 	@todo_item.update(due_date: "All Out!")
-	redirect '/todos'
+	redirect '/edit'
 end
+
+# get '/increase_number/:item' do
+# 	@todo_item = TodoItem.find(params[:item])
+# 	@todo_item.increment(:number, 1)
+# 	redirect '/edit'
+# end
 
 
 

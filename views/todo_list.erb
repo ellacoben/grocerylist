@@ -36,56 +36,96 @@
 
 <div class="left"> <h2> I have: </h2>
 <% @tasks.each do |task| %> 
-<% unless task.due_date == "All Out!" %>
+<% if task.due_date == "Full Supply" %>
 <% unless task.description.blank? %> 
-
-  <% if task.due_date == "Full Supply" %>
+<table style="width:50%" align="center">
+  <tr>
+<td style="width: 20%">
     <button class="full"></button> 
-  <% end %>
-
-  <% if task.due_date == "Running Low" %>
-    <button class="low"></button>  
-  <% end %>
-
-  
+</td>
+  <td style="width: 40%">
   <% unless task.number.blank? %> <%= task.number %> <% end %>
   <% unless task.unit.blank? %> <%= task.unit %> <% end %>
+</td>
+<td style="width: 40%">
   <%= task.description %> 
-
-  <a style="text-decoration: none" href= '/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> 
-  
-
-  <br>
+</td>
+  </tr>
+  </table>
 <% end %> 
 <% end %>
 <% end %>
+<% @tasks.each do |task| %>
+<% if task.due_date == "Running Low" %>
+<% unless task.description.blank? %> 
+<table style="width:50%" align="center">
+  <tr>
+<td style="width: 20%">
+    <button class="low"></button>  
+</td>
+  <td style="width: 40%">
+  <% unless task.number.blank? %> <%= task.number %> <% end %>
+  <% unless task.unit.blank? %> <%= task.unit %> <% end %>
+</td>
+<td style="width: 40%">
+  <%= task.description %> 
+</td>
+  </tr>
+  </table>
+<% end %> 
+<% end %>
+<% end %>
+<a style="text-decoration: underline" href="/edit">Edit List</a>
 </div>
 
 <div class="right"> <h2>I need: </h2> 
 <% @tasks.each do |task| %> 
-<% unless task.due_date == "Full Supply" %>
+<% if task.due_date == "Running Low" %>
 <% unless task.description.blank? %> 
-
-  <% if task.due_date == "Running Low" %>
+<table style="width:50%" align="center">
+  <tr>
+<td style="width: 20%">
     <button class="low"></button>
-  <% end %>
-
-  <% if task.due_date == "All Out!" %>
-    <button class="out"></button> 
-  <% end %>
-
+</td>
+  <td style="width: 40%">
    <% unless task.number.blank? %> <%= task.number %> <% end %>
   <% unless task.unit.blank? %> <%= task.unit %> <% end %>
+  </td>
+<td style="width: 40%">
   <%= task.description %> 
-
-  <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' ><button class="delete"> X</button> </a> 
-  
-   
-  <br>
+</td>
+</tr>
+</table>
 <% end %>
 <% end %> 
 <% end %>
+<% @tasks.each do |task| %>
+<% if task.due_date == "All Out!" %>
+<% unless task.description.blank? %> 
+<table style="width:50%" align="center">
+  <tr>
+<td style="width: 20%">
+    <button class="out"></button>
+</td>
+  <td style="width: 40%">
+   <% unless task.number.blank? %> <%= task.number %> <% end %>
+  <% unless task.unit.blank? %> <%= task.unit %> <% end %>
+  </td>
+<td style="width: 40%">
+  <%= task.description %> 
+</td>
+</tr>
+</table>
+<% end %>
+<% end %> 
+<% end %>
+<a style="text-decoration: underline" href="/edit">Edit List</a>
 </div>
+<br>
 
 
+
+
+<!-- <div class="bottom"><h3>Key</h3>
+</div> -->
 
