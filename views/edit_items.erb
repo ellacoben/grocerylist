@@ -1,284 +1,345 @@
 <!-- grocery list -->
 <div class="center"><h1> <%= @user.name %>'s groceries</h1>
-
-<form action='/new_item' method='POST'>
-  <strong>Add Food Item:</strong>
-  <input type='text' name='task' placeholder='item name' />
-  <select name = 'date'>
-  <option value="Full Supply">Full Supply</option>
-  <option value="Running Low">Running Low</option>
-  <option value="All Out!">All Out!</option>
-  </select>
-  <select name = 'number'>
-  <option value=1>1</option>
-  <option value=2>2</option>
-  <option value=3>3</option>
-  <option value=4>4</option>
-  <option value=5>5</option>
-  <option value=6>6</option>
-  <option value=7>7</option>
-  <option value=8>8</option>
-  <option value=9>9</option>
-  <option value=10>10</option>
-  </select>
-  <select name = 'unit'>
-  <option value=""> </option>
-  <option value="box">box</option>
-  <option value="bag">bag</option>
-  <option value="jar">jar</option>
-  <option value="can">can</option>
-  </select>
-  <input type='submit' value='Save'/>
-<br><br>
-<a style="text-decoration: underline" href="/logout">Log Out</a>
-</form>
+  <form action='/new_item' method='POST'>
+    <strong>Add Food Item:</strong>
+    <input type='text' name='task' placeholder='item name' />
+      <select name = 'date'>
+        <option value="Full Supply">Full Supply</option>
+        <option value="Running Low">Running Low</option>
+        <option value="All Out!">All Out!</option>
+      </select>
+      <select name = 'number'>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+      </select>
+      <select name = 'unit'>
+        <option value=""> </option>
+        <option value="box">box</option>
+        <option value="bag">bag</option>
+        <option value="jar">jar</option>
+        <option value="can">can</option>
+      </select>
+    <input type='submit' value='Save'/>
+    <br><br>
+    <a style="text-decoration: underline" href="/logout">Log Out</a>
+  </form>
 </div>
 
 <!-- I HAVE LIST-->
 
 <div class="left"> <h2> I have: </h2>
-<table style="width:100%" align="center">
-  <tr>
-    <td style="width:40%">
-      <u>Current Status</u>
-    </td>
-    <td style="width:25%">
-      <u>Change Supply</u>
-    </td>
-    <td style="width:35%">
-      <u>Change Amount</u>
-    </td>
-  </tr>
-</table>
-<% @tasks.each do |task| %> 
-<% if task.due_date == "Full Supply" %>
-<% unless task.description.blank? %> 
-<table style="width:100%" align="center">
-  <tr>
-<td style="width:5%">
-    <button class="full"></button> 
-</td>
-  <td style="width:15%">
-  <% unless task.number.blank? %> <%= task.number %> <% end %>
-  <% unless task.unit.blank? %> <%= task.unit %> <% end %>
-</td> 
-<td style="width:20%">
-  <%= task.description %> 
-</td>
-<td style="width:25%">
-  <a style="text-decoration: none" href= '/delete_item/<%= task.id %>'><button class="delete"> <span title="delete item">X</span></button> </a> 
-    <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button></a>
-    <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button></a>
-  </td>
-  <td style="width:35%">
-  <form action='/update_number/<%= task.id %>' method='GET'>
-  <select name = 'number'>
-  <option value=1>1</option>
-  <option value=2>2</option>
-  <option value=3>3</option>
-  <option value=4>4</option>
-  <option value=5>5</option>
-  <option value=6>6</option>
-  <option value=7>7</option>
-  <option value=8>8</option>
-  <option value=9>9</option>
-  <option value=10>10</option>
-  <input type='submit' value='Save'/>
-  </select>
-</form>
-<form action='/update_unit/<%= task.id %>' method='GET'>
-  <select name = 'unit'>
-  <option value=""> </option>
-  <option value="box">box</option>
-  <option value="bag">bag</option>
-  <option value="jar">jar</option>
-  <option value="can">can</option>
-  </select>
-  <input type='submit' value='Save'/>
-</form>
-</td>
-  </tr>
+  <table style="width:100%" align="center">
+    <tr>
+      <td style="width:40%">
+        <u>Current Status</u>
+      </td>
+      <td style="width:25%">
+        <u>Change Supply</u>
+      </td>
+      <td style="width:35%">
+        <u>Change Amount</u>
+      </td>
+    </tr>
   </table>
-<% end %> 
-<% end %>
-<% end %>
-<% @tasks.each do |task| %>
-<% if task.due_date == "Running Low" %>
-<% unless task.description.blank? %> 
-<table style="width:100%" align="center">
-  <tr>
-<td style="width:5%">
-    <button class="low"></button>  
-</td>
-  <td style="width: 15%">
-  <% unless task.number.blank? %> <%= task.number %> <% end %>
-  <% unless task.unit.blank? %> <%= task.unit %> <% end %>
-</td> 
-<td style="width:20%">
-  <%= task.description %> 
-</td>
-<td style="width:25%">
-  <a style="text-decoration: none" href= '/delete_item/<%= task.id %>'><button class="delete"><span title="delete item">X</span></button> </a> 
-    <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button></a>
-    <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button></a>
-  </td>
-  <td style="width:35%">
-  <form action='/update_number/<%= task.id %>' method='GET'>
-  <select name = 'number'>
-  <option value=1>1</option>
-  <option value=2>2</option>
-  <option value=3>3</option>
-  <option value=4>4</option>
-  <option value=5>5</option>
-  <option value=6>6</option>
-  <option value=7>7</option>
-  <option value=8>8</option>
-  <option value=9>9</option>
-  <option value=10>10</option>
-  <input type='submit' value='Save'/>
-  </select>
-</form>
-<form action='/update_unit/<%= task.id %>' method='GET'>
-  <select name = 'unit'>
-  <option value=""> </option>
-  <option value="box">box</option>
-  <option value="bag">bag</option>
-  <option value="jar">jar</option>
-  <option value="can">can</option>
-  </select>
-  <input type='submit' value='Save'/>
-</form>
-</td>
-  </tr>
-  </table>
-<% end %> 
-<% end %>
-<% end %>
-<a style="text-decoration: underline" href="/todos">Back</a>
-
+  <% @tasks.each do |task| %> 
+    <% if task.due_date == "Full Supply" %>
+      <% unless task.description.blank? %> 
+        <table style="width:100%" align="center">
+          <tr>
+            <td style="width:5%">
+              <button class="full"></button> 
+            </td>
+            <td style="width:15%">
+              <% unless task.number.blank? %> 
+                <%= task.number %> 
+              <% end %>
+              <% unless task.unit.blank? %> 
+                <%= task.unit %> 
+              <% end %>
+            </td> 
+            <td style="width:20%">
+              <%= task.description %> 
+            </td>
+            <td style="width:25%">
+              <a style="text-decoration: none" href= '/delete_item/<%= task.id %>'>
+                <button class="delete"> 
+                  <span title="delete item"> X
+                  </span>
+                </button> 
+              </a> 
+              <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'>
+                <button class="low">
+                </button>
+              </a>
+              <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'>
+                <button class="out">
+                </button>
+              </a>
+            </td>
+            <td style="width:35%">
+              <form action='/update_number/<%= task.id %>' method='GET'>
+                <select name = 'number'>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+                <input type='submit' value='Save'/>
+              </form>
+              <form action='/update_unit/<%= task.id %>' method='GET'>
+                <select name = 'unit'>
+                  <option value=""> </option>
+                  <option value="box">box</option>
+                  <option value="bag">bag</option>
+                  <option value="jar">jar</option>
+                  <option value="can">can</option>
+                </select>
+                <input type='submit' value='Save'/>
+              </form>
+            </td>
+          </tr>
+        </table>
+      <% end %> 
+    <% end %>
+  <% end %>
+  <% @tasks.each do |task| %>
+    <% if task.due_date == "Running Low" %>
+      <% unless task.description.blank? %> 
+        <table style="width:100%" align="center">
+          <tr>
+            <td style="width:5%">
+              <button class="low">
+              </button>  
+            </td>
+            <td style="width: 15%">
+              <% unless task.number.blank? %> 
+                <%= task.number %> 
+              <% end %>
+              <% unless task.unit.blank? %> 
+                <%= task.unit %> 
+              <% end %>
+            </td> 
+            <td style="width:20%">
+              <%= task.description %> 
+            </td>
+            <td style="width:25%">
+              <a style="text-decoration: none" href= '/delete_item/<%= task.id %>'>
+                <button class="delete">
+                  <span title="delete item">X
+                  </span>
+                </button> 
+              </a> 
+              <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'>
+                <button class="full">
+                </button>
+              </a>
+              <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'>
+                <button class="out">
+                </button>
+              </a>
+            </td>
+            <td style="width:35%">
+              <form action='/update_number/<%= task.id %>' method='GET'>
+                <select name = 'number'>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+                <input type='submit' value='Save'/>
+              </form>
+              <form action='/update_unit/<%= task.id %>' method='GET'>
+                <select name = 'unit'>
+                  <option value=""> </option>
+                  <option value="box">box</option>
+                  <option value="bag">bag</option>
+                  <option value="jar">jar</option>
+                  <option value="can">can</option>
+                </select>
+                <input type='submit' value='Save'/>
+              </form>
+            </td>
+          </tr>
+        </table>
+      <% end %> 
+    <% end %>
+  <% end %>
+  <a style="text-decoration: underline" href="/todos">Back</a>
 </div>
 
 <!-- I NEED LIST-->
 
 <div class="right"> <h2>I need: </h2> 
-<table style="width:100%" align="center">
-  <tr>
-    <td style="width:40%">
-      <u>Current Status</u>
-    </td>
-    <td style="width:25%">
-      <u>Change Supply</u>
-    </td>
-    <td style="width:35%">
-      <u>Change Amount</u>
-    </td>
-  </tr>
-</table>
-<% @tasks.each do |task| %> 
-<% if task.due_date == "Running Low" %>
-<% unless task.description.blank? %> 
-<table style="width:100%" align="center">
-  <tr>
-<td style="width: 5%">
-    <button class="low"></button>
-</td>
-  <td style="width: 15%">
-   <% unless task.number.blank? %> <%= task.number %> <% end %>
-  <% unless task.unit.blank? %> <%= task.unit %> <% end %>
-  </td>
-<td style="width: 20%">
-  <%= task.description %> 
-</td>
-<td style="width: 25%">
-  <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' ><button class="delete"> <span title="delete item">X</span></button> </a> 
-    <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button></a>
-    <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'><button class="out"></button></a>
-  </td>
-  <td style="width:35%">
-  <form action='/update_number/<%= task.id %>' method='GET'>
-  <select name = 'number'>
-  <option value=1>1</option>
-  <option value=2>2</option>
-  <option value=3>3</option>
-  <option value=4>4</option>
-  <option value=5>5</option>
-  <option value=6>6</option>
-  <option value=7>7</option>
-  <option value=8>8</option>
-  <option value=9>9</option>
-  <option value=10>10</option>
-  <input type='submit' value='Save'/>
-  </select>
-</form>
-<form action='/update_unit/<%= task.id %>' method='GET'>
-  <select name = 'unit'>
-  <option value=""> </option>
-  <option value="box">box</option>
-  <option value="bag">bag</option>
-  <option value="jar">jar</option>
-  <option value="can">can</option>
-  </select>
-  <input type='submit' value='Save'/>
-</form>
-</td>
-</tr>
-</table>
-<% end %>
-<% end %> 
-<% end %>
-<% @tasks.each do |task| %>
-<% if task.due_date == "All Out!" %>
-<% unless task.description.blank? %> 
-<table style="width:100%" align="center">
-  <tr>
-<td style="width: 5%">
-    <button class="out"></button>
-</td>
-  <td style="width: 15%">
-   <% unless task.number.blank? %> <%= task.number %> <% end %>
-  <% unless task.unit.blank? %> <%= task.unit %> <% end %>
-  </td>
-<td style="width: 20%">
-  <%= task.description %> 
-</td>
-<td style="width: 25%">
-  <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' ><button class="delete"> <span title="delete item">X</span></button> </a> 
-    <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'><button class="full"></button></a>
-    <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'><button class="low"></button></a>
-  </td>
-  <td style="width:35%">
-  <form action='/update_number/<%= task.id %>' method='GET'>
-  <select name = 'number'>
-  <option value=1>1</option>
-  <option value=2>2</option>
-  <option value=3>3</option>
-  <option value=4>4</option>
-  <option value=5>5</option>
-  <option value=6>6</option>
-  <option value=7>7</option>
-  <option value=8>8</option>
-  <option value=9>9</option>
-  <option value=10>10</option>
-  <input type='submit' value='Save'/>
-  </select>
-</form>
-<form action='/update_unit/<%= task.id %>' method='GET'>
-  <select name = 'unit'>
-  <option value=""> </option>
-  <option value="box">box</option>
-  <option value="bag">bag</option>
-  <option value="jar">jar</option>
-  <option value="can">can</option>
-  </select>
-  <input type='submit' value='Save'/>
-</form>
-</td>
-</tr>
-</table>
-<% end %>
-<% end %> 
-<% end %>
-<a style="text-decoration: underline" href="/todos">Back</a>
+  <table style="width:100%" align="center">
+    <tr>
+      <td style="width:40%">
+        <u>Current Status</u>
+      </td>
+      <td style="width:25%">
+        <u>Change Supply</u>
+      </td>
+      <td style="width:35%">
+        <u>Change Amount</u>
+      </td>
+    </tr>
+  </table>
+  <% @tasks.each do |task| %> 
+    <% if task.due_date == "Running Low" %>
+      <% unless task.description.blank? %> 
+        <table style="width:100%" align="center">
+          <tr>
+            <td style="width: 5%">
+              <button class="low">
+              </button>
+            </td>
+            <td style="width: 15%">
+              <% unless task.number.blank? %> 
+                <%= task.number %> 
+              <% end %>
+              <% unless task.unit.blank? %> 
+                <%= task.unit %> 
+              <% end %>
+            </td>
+            <td style="width: 20%">
+              <%= task.description %> 
+            </td>
+            <td style="width: 25%">
+              <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' >
+                <button class="delete"> 
+                  <span title="delete item">X
+                  </span>
+                </button> 
+              </a> 
+              <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'>
+                <button class="full">
+                </button>
+              </a>
+              <a style="text-decoration: none" href='/change_status_out/<%= task.id %>'>
+                <button class="out">
+                </button>
+              </a>
+            </td>
+            <td style="width:35%">
+              <form action='/update_number/<%= task.id %>' method='GET'>
+                <select name = 'number'>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+                <input type='submit' value='Save'/>
+              </form>
+              <form action='/update_unit/<%= task.id %>' method='GET'>
+                <select name = 'unit'>
+                  <option value=""> </option>
+                  <option value="box">box</option>
+                  <option value="bag">bag</option>
+                  <option value="jar">jar</option>
+                  <option value="can">can</option>
+                </select>
+                <input type='submit' value='Save'/>
+              </form>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    <% end %> 
+  <% end %>
+  <% @tasks.each do |task| %>
+    <% if task.due_date == "All Out!" %>
+      <% unless task.description.blank? %> 
+        <table style="width:100%" align="center">
+          <tr>
+            <td style="width: 5%">
+              <button class="out">
+              </button>
+            </td>
+            <td style="width: 15%">
+              <% unless task.number.blank? %> 
+                <%= task.number %> 
+              <% end %>
+              <% unless task.unit.blank? %> 
+                <%= task.unit %> 
+              <% end %>
+            </td>
+            <td style="width: 20%">
+              <%= task.description %> 
+            </td>
+            <td style="width: 25%">
+              <a style="text-decoration: none" href ='/delete_item/<%= task.id %>' >
+                <button class="delete"> 
+                  <span title="delete item">X
+                  </span>
+                </button> 
+              </a> 
+              <a style="text-decoration: none" href='/change_status_full/<%= task.id %>'>
+                <button class="full">
+                </button>
+              </a>
+              <a style="text-decoration: none" href='/change_status_low/<%= task.id %>'>
+                <button class="low">
+                </button>
+              </a>
+            </td>
+            <td style="width:35%">
+              <form action='/update_number/<%= task.id %>' method='GET'>
+                <select name = 'number'>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select>
+                <input type='submit' value='Save'/>
+              </form>
+              <form action='/update_unit/<%= task.id %>' method='GET'>
+                <select name = 'unit'>
+                  <option value=""> </option>
+                  <option value="box">box</option>
+                  <option value="bag">bag</option>
+                  <option value="jar">jar</option>
+                  <option value="can">can</option>
+                </select>
+                <input type='submit' value='Save'/>
+              </form>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    <% end %> 
+  <% end %>
+  <a style="text-decoration: underline" href="/todos">Back</a>
 </div>
 
 

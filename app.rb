@@ -18,18 +18,12 @@ else
 	:adapter => 'sqlite3',
 	:database => 'db/development.db',
 	:encoding =>'utf8'
-)
+	)
 end
-
- # get '/' do
-	#  @tasks = TodoItem.all.order(:due_date)
-	#  erb :index
- # end
 
 before do
 	@user = User.find_by(name: session[:username])
 end
-
 
 get '/signup' do
 	erb :signup
@@ -51,31 +45,29 @@ post '/login' do
 	else 
 		erb :loginfailed
 	end
-	#require 'json'
-	#JSON.pretty_generate params
 end
 
- post '/new_item' do
- 	@user.todo_items.create(description: params[:task], due_date: params[:date], number: params[:number], unit: params[:unit])
-	 redirect '/todos'
- end
+post '/new_item' do
+	@user.todo_items.create(description: params[:task], due_date: params[:date], number: params[:number], unit: params[:unit])
+	redirect '/todos'
+end
 
- get '/update_number/:item' do
+get '/update_number/:item' do
  	@todo_item = TodoItem.find(params[:item])
  	@todo_item.update(number: params[:number])
  	redirect '/edit'
- end
+end
 
- get '/update_unit/:item' do
+get '/update_unit/:item' do
  	@todo_item = TodoItem.find(params[:item])
  	@todo_item.update(unit: params[:unit])
  	redirect '/edit'
- end
+end
 
- post '/new_user' do 
+post '/new_user' do 
  	@user = User.create(params)
  	redirect '/'
- end
+end
 
 
 get '/delete_user/:user' do
@@ -123,12 +115,6 @@ get '/change_status_out/:item' do
 	@todo_item.update(due_date: "All Out!")
 	redirect '/edit'
 end
-
-# get '/increase_number/:item' do
-# 	@todo_item = TodoItem.find(params[:item])
-# 	@todo_item.increment(:number, 1)
-# 	redirect '/edit'
-# end
 
 
 
