@@ -98,6 +98,24 @@ get '/edit' do
 	erb :edit_items
 end
 
+# get '/recipe' do
+# 	redirect '/' unless @user
+# 	@recipe = User.recipe.create(params)
+# 	erb :recipes
+# end
+
+# post '/new_recipe' do
+# 	redirect '/' unless @user
+# 	@recipe = User.recipe.create(params)
+# 	erb :recipes
+# end
+
+# post '/recipe_ingredients/:recipe' do
+# 	# redirect '/' unless @user
+# 	erb :recipeingredients
+# end
+
+
 get '/change_status_full/:item' do
 	@todo_item = TodoItem.find(params[:item])
 	@todo_item.update(due_date: "Full Supply")
