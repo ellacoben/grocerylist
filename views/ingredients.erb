@@ -1,0 +1,35 @@
+<div class="center"><h1> Ingredients for <%= @recipe.name %></h1>
+  <form action='/new_item' method='POST'>
+    <strong>Add New Ingredient:</strong><br><br>
+     <form action='/new_ingredient' method='POST'>
+    <strong>Add Food Item:</strong>
+    <input type='text' name='description' placeholder='ingredient' />
+      <select name = 'number'>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+      </select>
+      <select name = 'unit'>
+        <option value=""> </option>
+        <option value="box">box</option>
+        <option value="bag">bag</option>
+        <option value="jar">jar</option>
+        <option value="can">can</option>
+        <option value="bottle">bottle</option>
+      </select>
+    <input type='submit' value='Save'/>
+  </form>
+</div>
+
+<div class="center">
+  <% @recipes.each do |recipe| %>
+    <%= recipe.name %>
+  end
+</div>

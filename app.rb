@@ -8,6 +8,8 @@ require 'bundler/setup'
 Bundler.require
 require './models/TodoItem'
 require './models/User'
+require './models/Recipe'
+require './models/Ingredients'
 
 enable :sessions
 
@@ -50,6 +52,16 @@ end
 post '/new_item' do
 	@user.todo_items.create(description: params[:task], due_date: params[:date], number: params[:number], unit: params[:unit])
 	redirect '/todos'
+end
+
+post '/new_recipe' do
+	@user.recipes.create(recipe_name: params[:name], instructions: params[:instructions])
+	redirect '/ingredients'
+end
+
+post '/new_ingredient' do
+	@recipes.ingredients.create(description: params[:description], number: params[:number], unit: params[:unit])
+	redirect '/ingredients'
 end
 
 get '/update_number/:item' do
@@ -98,22 +110,18 @@ get '/edit' do
 	erb :edit_items
 end
 
-# get '/recipe' do
-# 	redirect '/' unless @user
-# 	@recipe = User.recipe.create(params)
-# 	erb :recipes
-# end
 
-# post '/new_recipe' do
-# 	redirect '/' unless @user
-# 	@recipe = User.recipe.create(params)
-# 	erb :recipes
-# end
+get '/recipes' do
+  redirect '/' unless @user
+  @recipes = @user.recipes.order(:recipe_name)
+  erb :recipes
+end
 
-# post '/recipe_ingredients/:recipe' do
-# 	# redirect '/' unless @user
-# 	erb :recipeingredients
-# end
+get '/ingredients' do
+  redirect '/' unless @user
+  @ingrdients = @recipe.ingredients.order(:description)
+  erb :ingredients
+end
 
 
 get '/change_status_full/:item' do

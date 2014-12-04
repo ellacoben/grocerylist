@@ -1,3 +1,4 @@
 class Recipe < ActiveRecord::Base
-	has_many :todo_items
+	has_many :ingredients
+	belongs_to :user
 end
