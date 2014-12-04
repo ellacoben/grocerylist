@@ -1,6 +1,5 @@
-<div class="center"><h1> <%= @user.name %>'s recipes</h1>
+<div class="left"><h1> Add New Recipe:</h1>
   <form action='/new_recipe' method='POST'>
-    <strong>Add New Recipe:</strong><br><br>
     <textarea name='name' placeholder='recipe name' rows='5' cols='45'></textarea><br><br>
     <textarea name='instructions' placeholder='recipe instructions' rows='15' cols= '45'></textarea><br><br>
 
@@ -10,8 +9,9 @@
   </form>
 </div>
 
-<div class="center">
+<div class="right"><h1> <%= @user.name %>'s recipes</h1>
   <% @recipes.each do |recipe| %>
-    <%= recipe.name %>
+    <%= recipe.recipe_name %><br>
+    <%= recipe.instructions %> <br><br>
   <% end %>
 </div>

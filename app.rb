@@ -9,7 +9,7 @@ Bundler.require
 require './models/TodoItem'
 require './models/User'
 require './models/Recipe'
-require './models/Ingredients'
+require './models/Ingredient'
 
 enable :sessions
 
@@ -60,6 +60,7 @@ post '/new_recipe' do
 end
 
 post '/new_ingredient' do
+	@recipes = Recipes.find(params[:recipe_name])
 	@recipes.ingredients.create(description: params[:description], number: params[:number], unit: params[:unit])
 	redirect '/ingredients'
 end
@@ -110,7 +111,6 @@ get '/edit' do
 	erb :edit_items
 end
 
-
 get '/recipes' do
   redirect '/' unless @user
   @recipes = @user.recipes.order(:recipe_name)
@@ -119,7 +119,8 @@ end
 
 get '/ingredients' do
   redirect '/' unless @user
-  @ingrdients = @recipe.ingredients.order(:description)
+  @ingredient = Ingredient.find_by(params[:description])
+  @ingredient = @recipe.ingredients.order(:description)
   erb :ingredients
 end
 
