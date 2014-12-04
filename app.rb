@@ -56,7 +56,7 @@ end
 
 post '/new_recipe' do
 	@user.recipes.create(recipe_name: params[:name], instructions: params[:instructions])
-	redirect '/ingredients'
+	redirect '/recipes' #CHANGE TO INGREDIENTS
 end
 
 post '/new_ingredient' do
