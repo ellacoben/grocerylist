@@ -15,11 +15,11 @@ When you sign in, you see your current grocery list. You can enter an item in th
 ![ScreenShot](screenshot2.jpg)
 
 ### Grocery List Edit Page
-You can edit the items by clicking the 'Edit List' option, which takes you to the Grocery List Edit Page (below).
+You can edit the items by clicking the 'Edit List' option, which takes you to the Grocery List Edit Page.
 ![ScreenShot](screenshot3.jpg)
 
 ###Recipe List 
-You can also add recipes to an account by clicking the 'Recipes' button, taking you to the Recipe List page (below). In the future, you'll be able to edit the recipe's ingredients as well, but that feature has not been implemented yet.
+You can also add recipes to an account by clicking the 'Recipes' button, taking you to the Recipe List page. In the future, you'll be able to edit the recipe's ingredients as well, but that feature has not been implemented yet.
 ![ScreenShot](screenshot4.jpg)
 
 ### Logout Page
